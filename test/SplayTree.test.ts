@@ -57,10 +57,10 @@ describe("SplayTree", () => {
         const root = tree.getRoot();
         expect(root!.data).toBe(11);
     });
-    it("should splay the deleted node's parent to root", () => {
+    it("should splay the deleted node's largest smaller number", () => {
         const tree = initTree();
         tree.delete(5);
         const root = tree.getRoot();
-        expect(root!.data).toBe(6);
+        expect(root!.data).toBe(4);
     });
 });

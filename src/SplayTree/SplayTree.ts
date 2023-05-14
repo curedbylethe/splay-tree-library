@@ -166,7 +166,7 @@ export default class SplayTreeImpl<T> implements SplayTree<T> {
     rightRotate(node: Node<T>): void {
         const newParent: Node<T> | null = node.left;
         if (newParent) {
-            node.left = newParent.left;
+            node.left = newParent.right;
             if (newParent.right) {
                 newParent.right.parent = node;
             }
@@ -183,7 +183,6 @@ export default class SplayTreeImpl<T> implements SplayTree<T> {
             newParent.right = node;
             node.parent = newParent;
         }
-
     }
 
     /**
@@ -203,6 +202,7 @@ export default class SplayTreeImpl<T> implements SplayTree<T> {
         let node: Node<T> | null = root;
         while (node) {
             if (node.data === data) {
+                this.splay(node);
                 return node;
             } else if (node.data > data) {
                 node = node.left;

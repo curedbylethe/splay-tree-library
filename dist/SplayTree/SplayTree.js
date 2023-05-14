@@ -164,7 +164,7 @@ var SplayTreeImpl = /** @class */ (function () {
     SplayTreeImpl.prototype.rightRotate = function (node) {
         var newParent = node.left;
         if (newParent) {
-            node.left = newParent.left;
+            node.left = newParent.right;
             if (newParent.right) {
                 newParent.right.parent = node;
             }
@@ -201,6 +201,7 @@ var SplayTreeImpl = /** @class */ (function () {
         var node = root;
         while (node) {
             if (node.data === data) {
+                this.splay(node);
                 return node;
             }
             else if (node.data > data) {
